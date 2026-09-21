@@ -16,9 +16,6 @@ import numpy as np
 G_KPC = 4.30091e-6       # (km/s)^2 * kpc / M_sun
 C_KMS = 299792.458       # km/s
 A0_SI = 1.2e-10          # m/s^2
-# 1 m/s^2 = 1e-3 km/s^2 = 1e-3 * (3.085677581e16 s / kpc)^(-1) vb.
-# Birim çevrimi: 1 m/s^2 = 1.0e-3 * (1.0 / 3.085677581e16) (km/s)^2 / kpc * (saniye dönüşümü)
-# Pratik: a0 (km^2 / (s^2 * kpc)) = A0_SI * (kpc_to_m) / (1000)^2
 KPC_TO_M = 3.085677581e19
 A0_KPC = A0_SI * (KPC_TO_M / 1.0e6)  # ~ 3.7028e3 (km/s)^2 / kpc
 
@@ -173,7 +170,8 @@ def process_galaxy(dat_file):
     }
 
 def main():
-    data_dir = "data"
+    # GitHub klasör yapısıyla uyumlu hale getirildi
+    data_dir = "Veri"
     files = sorted(glob.glob(os.path.join(data_dir, "*.dat")))
     if not files:
         print(f"Hata: '{data_dir}' dizininde .dat uzantılı girdi bulunamadı.")
